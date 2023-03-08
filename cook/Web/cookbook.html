@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+  <!--特殊icon CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <style>
+    .el-table .el-table__cell{
+      padding: 0;/*去掉自带的内边距*/
+    }
+    .el-header img{
+      vertical-align: middle;/*设置中间对齐*/
+    }
+    .el-main{
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      top: 20px;
+    }
+    .el-header{
+      position: fixed;
+      top: 0;
+      z-index: 5;
+    }
+
+    .header{
+      background-color: #3385ff;
+      width: 100%;
+
+      overflow: hidden;
+      height: 50px;
+      margin: 0 ;
+      padding: 0;
+
+    }
+    body{
+      color: #444;
+      width: 100%;
+      background: none;
+      border: 0;
+      margin: 0 ;
+      padding: 0 ;
+
+
+    }
+
+
+    .header85{
+      width: 1180px;
+      margin: 0 auto;
+      min-width: 1180px;
+
+    }
+    .header_logo{
+      float: left;
+      color: #fff;
+      height: 70px;
+      line-height: 70px;
+    }
+    .header_logo>a{
+      display: block;
+    }
+    a{
+      text-decoration: none;
+    }
+    .header i{
+      color: #fff;
+      font-size: 40px;
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 10px;
+      float: left;
+      overflow: hidden;
+
+    }
+    .fa{
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+    .fa-500px:before{
+      content: "\f26e";
+    }
+    .fa-search:before {
+      font-size: 20px;
+      content: "\f002";
+    }
+    .deannav{
+
+      overflow: hidden;
+      float: left;
+      margin-left: 5px;
+
+    }
+    .deannav>ul{
+      white-space: nowrap;
+      height: 70px;
+
+      overflow: hidden;
+      margin: 0 0 0 80px;
+      padding: 0;
+
+    }
+    .deannav>ul>li{
+      height: 70px;
+      float: left;
+      white-space: nowrap;
+      position: relative;
+      margin-left: 10px;
+      list-style: none;
+    }
+    .deannav>ul>li>a{
+      margin-top: 18px;
+      height: 34px;
+      line-height: 34px;
+      font-size: 16px;
+      color: #fff;
+      padding: 0 20px;
+      border-radius: 20px;
+      display: inline-block;
+      transition: 0.3s ease-out;
+    }
+
+    .deansearch{
+      float: right;
+      margin-left: 10px;
+      height: 70px;
+      line-height: 70px;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+
+
+    }
+
+    .deanpiclisting{
+      width: 100%;
+      height: 330px;
+      display: block;
+      background:url("imgs/2.jpg")center center no-repeat;
+      background-size: cover;
+      border-style: none;
+      z-index: -1;
+
+    }
+    .deantopnames{
+      text-align: center;
+      color: #fff;
+      padding-top: 100px;
+      position: relative;
+      z-index: 3;
+
+    }
+    .deanpostartice{
+      display: inline-block;
+      text-align: center;
+      color: #fff;
+      background: #77bfa3;
+      font-size: 16px;
+      height: 30px;
+      line-height: 30px;
+      width: 30px;
+      border-radius: 30px;
+      transition: all 0.5s;
+
+    }
+    .deanrss{
+      display: inline-block;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: #a69abd;
+      font-size: 16px;
+      border-radius: 30px;
+      transition: all 0.5s;
+
+    }
+    .deanpostartice i {
+      display: block;
+      margin-top: 6px;
+    }
+    .deanrss i{
+      margin-top: 6px;
+      display: block;
+    }
+    .fa-paper-plane:before {
+      content: "\f1d8";
+    }
+    .fa-rss:before {
+      content: "\f09e";
+    }
+    .deansubttt{
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #ededed;
+      font-size: 18px;
+      text-align: center;
+      background: rgba(255,255,255,0.5);
+      position: relative;
+      top: 68px;
+      z-index: 1;
+    }
+    .deansubttt a{
+      color: black;
+    }
+    .deanzhuanti{
+      width: 1180px;
+      margin: 20px auto;
+     /* position: relative;
+      top: 300px;*/
+
+    }
+    .e1{
+      width: 100%;
+      float: left;
+      padding: 0;
+      margin-right: 35px;
+      margin-bottom: 30px;
+      background: #fff;
+      border-radius: 6px;
+      -webkit-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      list-style: none;
+
+    }
+    .deanztfm{
+      width: 370px;
+
+      border-radius: 6px 6px 0 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      right: 19px;
+      top:-20px;
+
+
+    }
+    .clear{
+      clear: both;
+    }
+    .deanztinfos{
+      padding: 20px 20px;
+      width: 330px;
+      margin: 0 auto;
+
+
+    }
+    .deanztinfos h3{
+      width: 340px;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 10px;
+
+
+    }
+    .deanztinfoss{
+      color: #a5a8b1;
+      font-size: 14px;
+      line-height: 22px;
+      height: 44px;
+      overflow: hidden;
+
+      display: inline-block;
+      line-clamp:3;
+      text-overflow: ellipsis;
+      white-space: normal;
+      padding-right: 20px;
+
+
+    }
+    .fa-eye:before {
+      content: "\f06e";
+    }
+    .fa-commenting-o:before {
+      content: "\f27b";
+    }
+    .deanseemoreha{
+      position: absolute;
+      right: 10px;
+
+      border-radius: 3px;
+      background: #e5f0ff;
+      color: #3385ff;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 40px;
+      height: 40px;
+      padding: 0 2em;
+      transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      float: left;
+    }
+    .fa-angle-right:before {
+      content: "\f105";
+    }
+    .el-footer{
+      font: 12px/1.5 Tahoma,Helvetica,'SimSun',sans-serif;
+      color: #444;
+
+    }
+    .card{
+      width: 350px;
+      word-break: break-all;
+      padding-right: 10px;
+    }
+    .card1{
+      overflow: hidden;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+
+    }
+
+    .el-card:hover{
+      transform: scale(1.03);
+    }
+    div{
+      display: block;
+    }
+
+    .d1180ss{
+      width: 1180px;
+      color: #676b6f;
+      margin: 0 auto;
+      overflow: hidden;
+
+    }
+    .deannewl{
+      float: left;
+      width: 250px;
+      position: relative;
+      z-index: 1;
+
+    }
+    .deannewl>h2 {
+      font-size: 45px;
+      color: #c6c7c9;
+      margin-bottom: 20px;
+    }
+    .fa-500px:before {
+      content: "\f26e";
+    }
+    .deannewl:after {
+      content: "";
+      display: block;
+      width: 0;
+      position: absolute;
+      right: 0;
+      height: 100%;
+      top: 0;
+      margin-top: 0;
+      border-right: 1px solid;
+      border-color: #25282a;
+      box-shadow: 1px 0 1px #393c40;
+    }
+    .deannewc {
+      float: left;
+      position: relative;
+      z-index: 1;
+    }
+    .deannewc:after {
+      content: "";
+      display: block;
+      width: 0;
+      position: absolute;
+      right: 0;
+      height: 100%;
+      top: 0;
+      margin-top: 0;
+      border-right: 1px solid;
+      border-color: #25282a;
+      box-shadow: 1px 0 1px #393c40;
+    }
+    .deanslp {
+      width: 160px;
+      float: left;
+      margin-left: 50px;
+    }
+    .deanslp>h3 {
+      color: #c6c7c9;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    .deanslpc>a {
+      display: block;
+      font-size: 14px;
+      line-height: 30px;
+      color: #676b6f;
+    }
+    .deanslp a:hover{
+      color: white;
+    }
+    .fa-edit:before, .fa-pencil-square-o:before {
+      content: "\f044";
+    }
+    .deannewr {
+      float: right;
+    }
+    .deannewr ul li {
+      position: relative;
+      float: left;
+      z-index: 1;
+      width: 72px;
+      list-style: none;
+    }
+    .deaniconss{
+      width: 72px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .deaniconss i.fa-weixin {
+      background: #47c333;
+      color: #fff;
+    }
+    .deaniconss span {
+      height: 22px;
+      line-height: 22px;
+      margin-top: 5px;
+      color: #949498;
+      display: block;
+      text-align: center;
+    }
+    .deaniconss i {
+      display: block;
+      width: 46px;
+      height: 46px;
+      background: #676b6f;
+      color: #000;
+      margin: 0 auto;
+      font-size: 25px;
+      border-radius: 46px;
+      text-align: center;
+      line-height: 46px;
+    }
+    .deaniconss i.fa-weibo {
+      background: #ff3401;
+      color: #fff;
+    }
+    .fa-weibo:before {
+      content: "\f18a";
+    }
+    .deankefuqqhao i {
+      width: 46px;
+      height: 46px;
+      display: block;
+      margin: 0 auto;
+      background: #6eb6ff;
+      color: #fff;
+      font-size: 25px;
+      border-radius: 46px;
+      text-align: center;
+      line-height: 46px;
+    }
+    .fa-qq:before {
+      content: "\f1d6";
+    }
+    .deankefuqqhao span {
+      height: 22px;
+      line-height: 22px;
+      margin-top: 5px;
+      color: #949498;
+      display: block;
+      text-align: center;
+    }
+    .deanrnums {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .deanrnums span {
+      display: block;
+      font-family: Impact;
+      font-weight: 400;
+      font-size: 54px;
+      color: #ff7300;
+      letter-spacing: 1px;
+    }
+    .deanrnums p {
+      color: #949498;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    .deannewfootercenter {
+      background: #2c2f31;
+      color: #424649;
+      font-size: 14px;
+      padding: 13px 0 16px;
+    }
+
+    .deannewfootercenter span {
+      display: inline-block;
+      line-height: 22px;
+      margin-right: 5px;
+    }
+    .deannewfootercenter a {
+      display: inline-block;
+      line-height: 22px;
+      margin-right: 5px;
+      color: #424649;
+    }
+    .deannewfootercenter a:hover{
+      color: darkgray;
+    }
+
+
+    .deanofficial {
+      background: #292929;
+      padding: 15px 0;
+      text-align: center;
+      overflow: hidden;
+      color: #aaa;
+    }
+
+    .deanofficial a {
+      display: inline-block;
+      margin-right: 6px;
+      color: #aaa;
+    }
+    .el-footer{
+
+    }
+    .deansubttt a:hover{
+      background: orange;
+    }
+
+
+
+
+
+
+
+  </style>
+
+</head>
+<body>
+<div id="app">
+  <el-container>
+    <template>
+    <el-header class="header" >
+      <div class="header85">
+        <div class="header_logo">
+          <a href="" title="烘焙馆">
+            <i class="fa fa-500px"></i>
+            <span style="color: #fff;font-size: 25px;float: left;">烘焙馆</span>
+          </a>
+
+      </div>
+        <div class="deannav">
+          <ul >
+            <li><a href="">首页</a></li>
+            <li><a href="">资讯</a></li>
+            <li><a href="">食谱</a></li>
+            <li><a href="">招聘</a></li>
+            <li><a href="">分类</a></li>
+
+          </ul>
+          </div>
+
+
+        <div class="deansearch">
+          <span style="float:right;">
+          <i class="fa fa-search" style="display: block;margin-top: 5px "></i>
+            <img src="imgs/avar.png" style="display: block;
+            border-radius: 50%;
+            margin-left: 100px;margin-top: 15px;width: 40px"
+            >
+          </span>
+        </div>
+
+
+          </div>
+
+
+
+
+    </el-header>
+    <el-main  >
+      <div class="deanpiclisting" >
+
+        <div class="deantopnames">
+          <h3 style="font-size: 48px;
+              font-weight: normal;
+              display: inline-block;
+              margin-bottom: 10px">
+            <span>食谱</span>
+            <a class="deanpostartice" href="" style="margin-left: 10px;"title="发表文章">
+              <i class="fa fa-paper-plane"></i>
+            </a>
+            <a class="deanrss" href="" style="margin-left: 10px;"title="发表文章">
+              <i class="fa fa-rss"></i>
+            </a>
+          </h3>
+          <div style="clear: both;">
+            <p style="margin-bottom: 15px;
+            margin-top: 0;
+                padding-top: 1px;
+                font-size: 18px;
+                font-weight: 200;
+                color: #fff;">
+              我们在多个城市设有办公室，期待听到你的声音。</p>
+          </div>
+        </div>
+        <div class="deansubttt">
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>蛋糕</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>面包</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>饼干</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>披萨</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>甜品</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>烤箱菜</b></a>
+          <a href="" style="display: inline-block;padding: 0 20px;"><b>其他点心</b></a>
+        </div>
+      </div>
+
+        <div class="deanzhuanti" style="margin-top:100px ">
+          <!--商品列表开始-->
+          <el-row class="e1" gutter="20"  >
+            <el-col span="8" v-for="p in productArr">
+              <el-card style="margin-bottom: 30px">
+
+              <div class="deanztfm" >
+                <a href="" style="text-decoration: none;color: #333">
+                  <img :src="p.url" style="width:370px; height: 185px;
+                  border-radius: 6px 6px 0 0;border: none;
+                  ">
+                </a>
+                <div class="card" style="margin: 20px 20px 0 20px" >
+                <h3 class="card1"  ><a href="" style="font-size: 20px;color:rgb(60,60,60)">
+                  {{p.title}}
+
+                </a></h3>
+                <div class="deanztinfoss">
+                    {{p.sum}}
+                </div>
+                <div class="clear"></div>
+                <div class="deanztinfos">
+
+
+
+                  <div>
+                    <span style="line-height: 40px;
+                            font-size: 14px;
+                            color: #a5a8b1;">
+                      <img src="imgs/01_avatar_middle.jpg"style="margin: 10px 0 0 0 ;
+                      width: 30px;
+                      border-radius: 30px;float: left">
+                    </span>
+                    <span style="display: inline-block;
+
+                          float: left;
+                          margin:12px 0 10px 5px;
+                          color: #a5a8b1;">烘焙馆</span>
+                    <b style="display: inline-block;
+                        margin: 12px 12px 0 10px;
+                        font-weight: normal;
+                        float: left;color: #a5a8b1;">
+                      <i class="fa fa-eye"></i>{{p.views}}</b>
+                    <em style="font-style: normal;color: #a5a8b1">
+                      <i class="fa fa-commenting-o"></i>
+                      {{p.message}}
+                    </em>
+                    <a href="" class="deanseemoreha">查看
+                      <i class="fa fa-angle-right"></i></a>
+                  </div>
+                  </div>
+                </div>
+
+              </div>
+              </el-card>
+            </el-col>
+          </el-row>
+
+
+
+          <!--商品列表结束-->
+
+        </div>
+
+    </el-main>
+    <el-footer class="el-footer" style=" width: 100%; margin: 0 auto ;padding: 0;">
+      <div class="footertop" style="background-color: #2f3234;padding:60px 0 50px;text-align: center">
+        <div class="d1180ss">
+          <div class="deannewl">
+            <h2><i class="fa fa-500px"></i>
+              <span>烘焙馆</span>
+            </h2>
+            <p>教程灵感就看烘焙馆</p>
+            <p>烘焙行业网络社区平台</p>
+            <p>全国百城上千个职位等你来</p>
+
+          </div>
+          <div class="deannewc">
+            <div class="deanslp">
+              <h3>关于我们</h3>
+              <div class="clear"></div>
+              <div class="deanslpc">
+                <a href="" target="_blank">关于我们</a>
+                <a href="" target="_blank">烘焙学院</a>
+                <a href="" target="_blank">烘焙食谱</a>
+                <a href="" target="_blank">分类信息</a>
+                <a href="" target="_blank">求职招聘</a>
+                <a href="" target="_blank">社区交流</a>
+              </div>
+            </div>
+            <div class="deanslp">
+              <h3>支持与服务</h3>
+              <div class="clear"></div>
+              <div class="deanslpc">
+                <a href="" target="_blank">联系我们</a>
+                <a href="" target="_blank">广告投放</a>
+                <a href="" target="_blank">用户协议</a>
+                <a href="" target="_blank">友情连结</a>
+                <a href="" target="_blank">在线反馈</a>
+                <a href="" target="_blank"><i class="fa fa-pencil-square-o"></i>我发投稿</a>
+              </div>
+            </div>
+            <div class="deanslp">
+              <h3>底部导航</h3>
+              <div class="clear"></div>
+              <div class="deanslpc">
+                <a href="" target="_blank">Archiver</a>
+                <a href="" target="_blank">手机版</a>
+                <a href="" target="_blank">小黑屋</a>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="deannewr">
+            <ul style="margin: 0;padding: 0">
+              <li>
+                <div class="deaniconss">
+                  <i class="fa fa-weixin"></i>
+                  <div class="clear"></div>
+                  <span>官网微信</span>
+                </div>
+              </li>
+              <li>
+                <div class="deaniconss">
+                  <i class="fa fa-weibo"></i>
+                  <div class="clear"></div>
+                  <span>新浪微博</span>
+                </div>
+              </li>
+              <li>
+                <a href="" target="_blank" class="deankefuqqhao">
+                  <i class="fa fa-qq"></i>
+                  <span>官方客服</span>
+                </a>
+              </li>
+            </ul>
+            <div class="clear"></div>
+            <div class="deanrnums">
+              <span>烘焙馆</span>
+              <div class="clear"></div>
+              <p>烘焙行业网络社区平台</p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="deannewfootercenter">
+        <div class="d1180ss">
+          <span>友情链接:</span>
+          <a href="" target="_blank">申请友情链接</a>
+          <a href="" target="_blank">烘焙馆</a>
+          <a href="" target="_blank">烘焙食谱</a>
+          <a href="" target="_blank">烘焙网</a>
+          <a href="" target="_blank">可欣互动</a>
+          <a href="" target="_blank">特特美食网</a>
+          <a href="" target="_blank">成都地暖公司</a>
+          <a href="" target="_blank">汽车排行榜</a>
+          <a href="" target="_blank">展厅设计</a>
+          <a href="" target="_blank">灵芝孢子粉</a>
+          <a href="" target="_blank">重庆网</a>
+          <a href="" target="_blank">滋补养生</a>
+          <a href="" target="_blank">学术论文投稿</a>
+          <a href="" target="_blank">玻璃钢管道</a>
+          <a href="" target="_blank">精酿啤酒</a>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="deannewfooterbt">
+        <div class="deanofficial">
+          Copyright &nbsp;&nbsp;©2018-2020&nbsp;&nbsp;
+          <a href="">烘焙馆</a>
+          Powered by©
+          <a href="">Discuz!</a>
+          技术支持：
+          <a href="">烘焙馆</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;(
+          <a href="">赣ICP备19004781号-4</a>
+          )
+        </div>
+      </div>
+    </el-footer>
+
+    </template>
+  </el-container>
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+ let v = new Vue({
+    el: '#app',
+    data: function() {
+      return {
+        productArr:[{id:3,title:"入口即酥的超浓花生酱酥饼",sum:"花生酱+花生油=超浓郁花生香没有糖粉，用了白砂糖本是入口即酥却又在酥后留下些许颗粒感花生浓香，谁吃谁胖。。。。用料：柔滑花生酱100克，花生油55克，白砂糖45克，泡打粉1克，小苏打1克，中筋面粉180克将花生酱， ...",
+        url:"imgs/c1.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"枣泥花式面包，好吃到爆",sum:"之前做了枣泥馅，配上花式面包，好吃到爆。枣泥花式面包的用料肉松面包面团 见肉松面包配方，枣泥适量枣泥花式面包的做法步骤1:配方见不一样的肉松面包，揉至完全扩展阶段28度发酵1-1.5小时。步骤2:面团翻面轻排气， ...",
+          url:"imgs/c2.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"中种淡奶油吐司,送朋友超有面子",sum:"前面做工烫种，波兰种，汤种面包，这次试试中种吐司吧，冷藏中种比常温的中种发的要小一点，但是不影响使用，夏天温度高的时候用冷藏的面团更方便，不会导致揉面温度过高影响出膜，这个配方是两个450克吐司的量中种  ...",
+          url:"imgs/c3.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"开放式三明治,一份小清新快手早餐",sum:"昨夜下了很怕人的骤雨，清晨办公桌上的薄荷微微抖动它的叶子。一份小清新快手早餐，让生活简洁不简单。芒果奶昔的用料吐司1片，鸡蛋一个， 再制干酪 1片，芝士粉适量，芒果一个，牛奶1杯，番茄酱适量，沙拉酱适量，  ...",
+          url:"imgs/c4.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"心形火龙果椰蓉面包,任谁都抗拒不了",sum:"椰蓉的香味 任谁都抗拒不了吧正好还有半个红心火龙果做成了***嫩的小爱心面包可爱又好吃可以做9个。火龙果椰蓉面包的用料主面团材料: ，高筋面粉240克，红心火龙果130克，全蛋液35克，盐1克，糖粉30克，奶粉20克，干 ...",
+          url:"imgs/c5.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"酥脆培根吐司芝士卷，人见人爱",sum:"人见人爱的培根平时一般都是放吐司里面做三文治吃今天培根要露脸啦哈哈哈哈简单快手酥脆可口的培根吐司芝士卷走起酥脆培根吐司芝士卷的用料吐司，培根，芝士片， 牙签酥脆培根吐司芝士卷的做法步骤1:烤箱提前220度预 ...",
+          url:"imgs/c6.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"红酒芝士面包,小小的梭子红酒芝士",sum:"红酒揉进面团里？酵母会不会醉晕了呀？虽然满腹疑惑，还是用了足量红酒。然后时时观察着，希望酵母不会醉死了去。还好，酵母没有醉得太厉害，虽然缓慢，面团依然表现出了生长的迹象。用了蔓越莓干，本想偷个懒，直接 ...",
+          url:"imgs/c7.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"爆浆抹茶甜甜圈面包，自带幸福感的小甜甜",sum:"爆浆抹茶甜甜圈面包好吃的起飞的爆浆抹茶甜甜圈，从里到外被抹茶包裹着，自带幸福感的小甜甜，抹茶控们完全抵抗不了的清新味道，我已经沦陷了～爆浆抹茶甜甜圈面包的用料中种面团，面包粉200g，鸡蛋46g，酵母3g，牛  ...",
+          url:"imgs/c8.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:2,title:"核桃葡萄干软欧：蔓越莓种面",sum:"蔓越莓种养了一周，终于可以试试什么口感啦！之前一直想做一款核桃包来着，今天就加一点葡萄干，来款核桃葡萄干软欧吧！核桃是个宝，好处太多，不一一列举啦！蔓越莓种面的用料主面团， 蔓越莓种面 150克，高筋粉130 ...",
+          url:"imgs/c9.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:7,title:"芒果酸奶条，绝对值得一试！",sum:"夏天到了，很多人都喜欢在家做些雪糕来吃。不过自制雪糕挺花功夫，并且把握不好会有冰渣。今天要分享的这道美食，口感和雪糕非常接近，并且做法更简单，吃起来口感绵密，基本上不会有冰渣。绝对值得一试！芒果酸奶条 ...",
+          url:"imgs/c10.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:7,title:"爱乐甜零卡糖版网红烤牛奶，香甜软嫩Q弹",sum:"网红烤牛奶的用料纯牛奶2袋，玉米淀粉50克， 爱乐甜零卡糖 4g，炼乳15克，蛋黄2个网红烤牛奶的做法步骤1:将需要的食材准备好步骤2:将材料加入锅中，中小火搅拌步骤3:搅拌至粘稠状即可步骤4:准备6寸蛋糕模具，也可以 ...",
+          url:"imgs/c11.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:7,title:"蔓越莓绿豆糕，味道还不错值得一试!",sum:"全家都很喜欢吃绿豆糕，但楼下甜品店的绿豆糕太甜了，那就自己动手做吧。之前尝试过带皮绿豆，颜色做出来没有去皮的干净，豆味好像也更浓郁些，这次做了去皮绿豆，味道还不错，值得一试!绿豆糕的用料去皮绿豆250克， ...",
+          url:"imgs/c12.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:4,title:"今日甜品·Q弹浓郁的网红烤奶块",sum:"小朋友总是吵着要吃奶酪棒？不如自己在家做这款厨房小白也零失败的网红烤奶块，奶香浓郁，外焦里嫩，让你大口吃到爽~今日甜品的用料德青源A级鲜鸡蛋黄 3个/其中1个留着刷奶块表面，玉米淀粉50克，白砂糖10-20克（根  ...",
+          url:"imgs/c13.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"},{id:1,title:"巧克力纸杯蛋糕，百分百成功超好吃",sum:"这款巧克力纸杯是我做过了N次百分百成功超好吃，不回缩不开裂，绵软细腻有弹性，承重非常赞！蛋糕体叠加好看的裱花奶油或奶油霜非常合适，请仔细按照我的步骤和方子来，方可做出饱满***外表光滑的成品！食材用量可做 ...",
+          url:"imgs/c14.jpg",logourl:"imgs/01_avatar_middle.jpg",views:"3000",message:"0"}],
+        p1Arr:[],
+      }
+    },
+   methods:{
+
+
+
+
+   },
+
+  })
+</script>
+</html>
